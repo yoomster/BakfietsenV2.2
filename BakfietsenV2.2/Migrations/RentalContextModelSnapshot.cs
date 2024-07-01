@@ -55,6 +55,9 @@ namespace BakfietsenV2._2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Available")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -78,14 +81,37 @@ namespace BakfietsenV2._2.Migrations
                     b.Property<int>("BikeId")
                         .HasColumnType("int");
 
+                    b.Property<double>("CostBike")
+                        .HasColumnType("float");
+
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("PriceAccessoires")
+                        .HasColumnType("float");
+
+                    b.Property<int>("RentDayCount")
+                        .HasColumnType("int");
+
+                    b.Property<double>("TotalCostAccessoires")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TotalRentalCost")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("ValidDate")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BikeId");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Bookings");
                 });
@@ -98,16 +124,61 @@ namespace BakfietsenV2._2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("LastName")
-                        .HasColumnType("float");
+                    b.Property<string>("HouseNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Zipcode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("BakfietsenV2._2.Models.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("BakfietsenV2._2.Models.Accessoire", b =>
@@ -131,9 +202,17 @@ namespace BakfietsenV2._2.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BakfietsenV2._2.Models.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Bike");
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("BakfietsenV2._2.Models.Booking", b =>

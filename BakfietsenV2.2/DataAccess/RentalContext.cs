@@ -12,6 +12,8 @@ namespace BakfietsenV2._2.DataAccess
         public DbSet<Bike> Bikes { get; set; }
         public DbSet<Accessoire> Accessoires { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
