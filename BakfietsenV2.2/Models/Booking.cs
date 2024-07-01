@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BakfietsenV2._2.Models
 {
-    internal class Booking
+    public class Booking
     {
+
     }
 }
