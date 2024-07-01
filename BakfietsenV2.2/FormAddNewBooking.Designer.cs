@@ -127,7 +127,6 @@
             // 
             ChoiceOfBikes.Font = new Font("Segoe UI", 12F);
             ChoiceOfBikes.FormattingEnabled = true;
-            ChoiceOfBikes.Items.AddRange(new object[] { "Urban Arrow 4 pers. € 20", "Urban Arrow 6 pers. € 30", "Urban Arrow 4 pers. E-Bike € 40", "Urban Arrow 6 pers. E-Bike € 60" });
             ChoiceOfBikes.Location = new Point(41, 60);
             ChoiceOfBikes.Name = "ChoiceOfBikes";
             ChoiceOfBikes.Size = new Size(252, 29);
@@ -199,6 +198,7 @@
             Controls.Add(BikeLabel);
             Name = "FormAddNewBooking";
             Text = "FormAddNewBooking";
+            Load += FormAddNewBooking_Load;
             ResumeLayout(false);
             PerformLayout();
         }

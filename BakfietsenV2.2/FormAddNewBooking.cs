@@ -28,7 +28,18 @@ namespace BakfietsenV2._2
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
-            CreateNewBooking();
+
+            //calculate total days
+            //set total days
+            //calculate the total cost
+            //set total cost
+
+            //show total price
+
+            //complete booking -> save to DB
+            //CreateNewBooking();
+
+
         }
 
         private void CreateNewBooking()
@@ -85,30 +96,54 @@ namespace BakfietsenV2._2
             }
         }
 
-        private void ChoiceOfBikes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //selected bike needs to be put inside the booking.Bike
+        //private void ChoiceOfBikes_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    string bikeChoice = ChoiceOfBikes.Text;
 
-            string bikeChoice = ChoiceOfBikes.Text;
 
-            //get selected bike
-            //get price from select
-            //add price to the booking
-
-            if (bikeChoice == "Urban Arrow 4 pers. € 20")
-                _booking.CostBike = 20;
-            else if (bikeChoice == "Urban Arrow 6 pers. € 30")
-                _booking.CostBike = 30;
-            else if (bikeChoice == "Urban Arrow 4 pers. E-Bike € 40")
-                _booking.CostBike = 40;
-            else if (bikeChoice == "Urban Arrow 6 pers. E-Bike € 60")
-                _booking.CostBike = 60;
-        }
+        //    if (bikeChoice == "Urban Arrow 4 pers. € 20")
+        //        _booking.CostBike = 20;
+        //    else if (bikeChoice == "Urban Arrow 6 pers. € 30")
+        //        _booking.CostBike = 30;
+        //    else if (bikeChoice == "Urban Arrow 4 pers. E-Bike 40")
+        //        _booking.CostBike = 40;
+        //    else if (bikeChoice == "Urban Arrow 6 pers. E-Bike € 60")
+        //        _booking.CostBike = 60; 
+        //}
 
         private void buttonChooseCustomer_Click(object sender, EventArgs e)
         {
             var FormAllCustomers = new FormShowAllCustomers(_vanDerBrinckes, _booking);
             FormAllCustomers.Show();
+
+                //_booking.CreateNewBike();
+                //_booking.CreateNewAccessoire();
+        }
+
+        private void FormAddNewBooking_Load(object sender, EventArgs e)
+        {
+            ReadAllBikes();
+            ReadAllAccessoires();
+        }
+
+        private void ReadAllAccessoires()
+        {
+            using (var db = new RentalContext())
+            {
+                var records = db.Accessoires.ToList();
+
+                ListBoxAccessoires.DataSource = records;
+            }
+        }
+
+        private void ReadAllBikes()
+        {
+            using (var db = new RentalContext())
+            {
+                var records = db.Bikes.ToList();
+
+                ChoiceOfBikes.DataSource = records;
+            }
         }
     }
 }

@@ -22,7 +22,7 @@ namespace BakfietsenV2._2
             string userName = textBoxUserName.Text;
             string password = textBoxPassword.Text;
 
-            if (userName == "nayoom" && password == "kaasje")
+            if (userName == "Naomi" && password == "172024")
             {
                 FormHome formHome = new FormHome();
                 formHome.Show();

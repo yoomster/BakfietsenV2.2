@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BakfietsenV2._2.DataAccess;
+using BakfietsenV2._2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,6 +62,82 @@ namespace BakfietsenV2._2.Models
             CalculateCostsAccessoires();
 
             TotalRentalCost = CostAccessoires + CostBike;
+        }
+
+
+        public void CreateNewBike()
+        {
+            var b = new Bike
+            {
+                Name = "Urban Arrow 4 pers.",
+                Price = 20,
+                Available = true
+            };
+            var b2 = new Bike
+            {
+                Name = "Urban Arrow 6 pers.",
+                Price = 30,
+                Available = true
+            };
+            var b3 = new Bike
+            {
+                Name = "Urban Arrow 4 pers. E-Bike",
+                Price = 40,
+                Available = true
+            };
+            var b4 = new Bike
+            {
+                Name = "Urban Arrow 6 pers. E-Bike",
+                Price = 60,
+                Available = true
+            };
+
+
+            using (var db = new RentalContext())
+            {
+                db.Bikes.Add(b);
+                db.Bikes.Add(b2);
+                db.Bikes.Add(b3);
+                db.Bikes.Add(b4);
+
+
+                db.SaveChanges();
+            }
+        }
+
+
+        public void CreateNewAccessoire()
+        {
+            var a = new Accessoire
+            {
+                Name = "Telefoonhouder",
+                Price = 5,
+            }; 
+            var a2 = new Accessoire
+            {
+                Name = "Helm",
+                Price = 10,
+            }; 
+            var a3 = new Accessoire
+            {
+                Name = "Regenhoes",
+                Price = 15,
+            };
+            var a4 = new Accessoire
+            {
+                Name = "Kinderstoeltje",
+                Price = 20,
+            };
+
+            using (var db = new RentalContext())
+            {
+                db.Accessoires.Add(a);
+                db.Accessoires.Add(a2);
+                db.Accessoires.Add(a3);
+                db.Accessoires.Add(a4);
+
+                db.SaveChanges();
+            }
         }
     }
 }

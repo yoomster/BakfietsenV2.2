@@ -13,5 +13,9 @@ namespace BakfietsenV2._2.Models
         public double Price { get; set; }
         public bool Available { get; set; }
 
+        public override string ToString()
+        {
+            return $"{Name} {Price}";
+        }
     }
 }

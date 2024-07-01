@@ -16,18 +16,23 @@ namespace BakfietsenV2._2.Models
 
 
         //instead of this, add to DB!
-        public Company()
+        //public Company()
+        //{
+        //    AllAccessoires.Add(new Accessoire{ Name = "Telefoonhouder", Price = 5 });
+        //    AllAccessoires.Add(new Accessoire{ Name = "Helm", Price = 10 });
+        //    AllAccessoires.Add(new Accessoire{ Name = "Regenhoes", Price = 15 });
+        //    AllAccessoires.Add(new Accessoire{ Name = "Babystoel", Price = 20 });
+
+
+        //    AllBikes.Add(new Bike { Name = "Urban Arrow 4 pers", Price = 20, Available = true });
+        //    AllBikes.Add(new Bike { Name = "Urban Arrow 6 pers", Price = 30, Available = true });
+        //    AllBikes.Add(new Bike { Name = "Urban Arrow 4 pers. E-Bike", Price = 40 , Available = true });
+        //    AllBikes.Add(new Bike { Name = "Urban Arrow 6 pers. E-Bike", Price = 60 , Available = true });
+        //}
+
+        public void AddToDB()
         {
-            AllAccessoires.Add(new Accessoire{ Name = "Telefoonhouder", Price = 5 });
-            AllAccessoires.Add(new Accessoire{ Name = "Helm", Price = 10 });
-            AllAccessoires.Add(new Accessoire{ Name = "Regenhoes", Price = 15 });
-            AllAccessoires.Add(new Accessoire{ Name = "Babystoel", Price = 20 });
 
-
-            AllBikes.Add(new Bike { Name = "Urban Arrow 4 pers", Price = 20, Available = true });
-            AllBikes.Add(new Bike { Name = "Urban Arrow 6 pers", Price = 30, Available = true });
-            AllBikes.Add(new Bike { Name = "Urban Arrow 4 pers. E-Bike", Price = 40 , Available = true });
-            AllBikes.Add(new Bike { Name = "Urban Arrow 6 pers. E-Bike", Price = 60 , Available = true });
         }
     }
 }
