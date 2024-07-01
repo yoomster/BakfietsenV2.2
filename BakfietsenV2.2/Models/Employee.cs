@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace BakfietsenV2._2.Models
 {
-    public class Bike
+    public class Employee
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double Price { get; set; }
-        public bool Available { get; set; }
-
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }
