@@ -20,9 +20,46 @@ namespace BakfietsenV2._2.Models
 
         public int RentDayCount { get; set; } = 0;
         public bool ValidDate { get; set; } = false;
-        public double TotalCostAccessoires { get; set; }
-        public double PriceAccessoires { get; set; }
+        public double CostAccessoires { get; set; }
         public double CostBike { get; set; } = 20; 
         public double TotalRentalCost { get; set; }
+
+        public void CalculateTotalNumberOfRentDays(DateTime start, DateTime end)
+        {
+            DateTime startDate = start;
+            DateTime returnDate = end;
+
+            TimeSpan difference = returnDate - startDate;
+
+            RentDayCount = (int)Math.Ceiling(difference.TotalDays);
+
+            if (RentDayCount <= 0)
+            {
+                MessageBox.Show("Error, foutieve invoer");
+                ValidDate = false;
+            }
+            else
+            {
+                ValidDate = true;
+            }
+        }
+
+        public void CalculateCostsBike() 
+        {
+            CostBike *= RentDayCount;
+        }
+
+        public void CalculateCostsAccessoires() 
+        {
+            CostAccessoires*= RentDayCount;
+        }
+
+        public void CalculateTotalCost()
+        {
+            CalculateCostsBike();
+            CalculateCostsAccessoires();
+
+            TotalRentalCost = CostAccessoires + CostBike;
+        }
     }
 }

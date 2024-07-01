@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             dataGridViewCustomers = new DataGridView();
+            buttonChooseCustomer = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCustomers).BeginInit();
             SuspendLayout();
             // 
@@ -41,11 +42,22 @@
             dataGridViewCustomers.Size = new Size(604, 331);
             dataGridViewCustomers.TabIndex = 0;
             // 
+            // buttonChooseCustomer
+            // 
+            buttonChooseCustomer.Location = new Point(572, 381);
+            buttonChooseCustomer.Name = "buttonChooseCustomer";
+            buttonChooseCustomer.Size = new Size(146, 57);
+            buttonChooseCustomer.TabIndex = 1;
+            buttonChooseCustomer.Text = "Kies klant";
+            buttonChooseCustomer.UseVisualStyleBackColor = true;
+            buttonChooseCustomer.Click += buttonChooseCustomer_Click;
+            // 
             // FormShowAllCustomers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(772, 450);
+            Controls.Add(buttonChooseCustomer);
             Controls.Add(dataGridViewCustomers);
             Name = "FormShowAllCustomers";
             Text = "Alle klanten";
@@ -58,5 +70,6 @@
 
         private DataGridView dataGridViewCustomers;
         private ListBox listBoxViewCustomers;
+        private Button buttonChooseCustomer;
     }
 }

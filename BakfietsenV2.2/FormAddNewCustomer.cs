@@ -16,6 +16,7 @@ namespace BakfietsenV2._2
     public partial class FormAddNewCustomer : Form
     {
         private readonly Company _vanDerBrinckes;
+
         public FormAddNewCustomer(Company vanDerBinckes)
         {
                 _vanDerBrinckes = vanDerBinckes;

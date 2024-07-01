@@ -14,11 +14,15 @@ namespace BakfietsenV2._2
 {
     public partial class FormShowAllCustomers : Form
     {
+        private readonly Booking _booking;
         private readonly Company _vanDerBrinckes;
 
-        public FormShowAllCustomers(Company vanDerBinckes)
+
+        public FormShowAllCustomers(Company vanDerBrinckes, Booking booking)
         {
-            _vanDerBrinckes = vanDerBinckes;
+            _booking = booking;
+            _vanDerBrinckes = vanDerBrinckes;
+
             InitializeComponent();
         }
 
@@ -35,14 +39,32 @@ namespace BakfietsenV2._2
 
                 dataGridViewCustomers.DataSource = records;
 
-                dataGridViewCustomers.Columns["FirstName"].HeaderText = "First Name";
-                dataGridViewCustomers.Columns["LastName"].HeaderText = "Last Name";
+                dataGridViewCustomers.Columns["FirstName"].HeaderText = "Voornaam";
+                dataGridViewCustomers.Columns["LastName"].HeaderText = "Achternaam";
                 dataGridViewCustomers.Columns["Id"].Visible = false;
                 dataGridViewCustomers.Columns["Zipcode"].Visible = false;
                 dataGridViewCustomers.Columns["City"].Visible = false;
             }
         }
 
+        private void SelectCustomer()
+        {
+            var selectedRow = dataGridViewCustomers.SelectedRows[0];
+            var selectedCustomer = selectedRow.DataBoundItem as Customer;
 
+            _booking.Customer = selectedCustomer;
+            this.Close();
+        }
+
+        private void buttonChooseCustomer_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewCustomers.SelectedRows.Count > 0)
+            {
+                SelectCustomer();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Geen klant geselecteerd.");
+        }
     }
 }

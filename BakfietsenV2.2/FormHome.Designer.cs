@@ -72,6 +72,7 @@
             buttonNewBooking.TabIndex = 6;
             buttonNewBooking.Text = "Nieuwe boeking";
             buttonNewBooking.UseVisualStyleBackColor = true;
+            buttonNewBooking.Click += buttonNewBooking_Click;
             // 
             // buttonAllBookings
             // 
@@ -81,6 +82,7 @@
             buttonAllBookings.TabIndex = 5;
             buttonAllBookings.Text = "Alle boekingen";
             buttonAllBookings.UseVisualStyleBackColor = true;
+            buttonAllBookings.Click += buttonAllBookings_Click;
             // 
             // FormHome
             // 

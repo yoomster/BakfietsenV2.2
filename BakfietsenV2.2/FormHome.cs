@@ -14,6 +14,8 @@ namespace BakfietsenV2._2
     public partial class FormHome : Form
     {
         private Company _vanDerBrinckes = new Company();
+        private Booking _booking = new Booking();
+
 
         public FormHome()
         {
@@ -26,10 +28,24 @@ namespace BakfietsenV2._2
             FormNewCustomer.Show();
         }
 
+        private void buttonNewBooking_Click(object sender, EventArgs e)
+        {
+            var FormNewBooking = new FormAddNewBooking(_vanDerBrinckes, _booking);
+            FormNewBooking.Show();
+        }
+
+
+
         private void buttonAllCustomers_Click(object sender, EventArgs e)
         {
-            var FormAllCustomers = new FormShowAllCustomers(_vanDerBrinckes);
+            var FormAllCustomers = new FormShowAllCustomers(_vanDerBrinckes, _booking);
             FormAllCustomers.Show();
+        }
+
+        private void buttonAllBookings_Click(object sender, EventArgs e)
+        {
+            var FormAllBookings = new FormShowAllBookings(_vanDerBrinckes);
+            FormAllBookings.Show();
         }
     }
 }
